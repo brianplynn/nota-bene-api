@@ -4,7 +4,9 @@ const bcrypt = require("bcrypt-nodejs");
 const cors = require('cors');
 const knex = require('knex');
 const register = require('./controllers/register');
-const signIn = require('./controllers/signin');
+const signin = require('./controllers/signin');
+const notes = require('./controllers/notes');
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -24,7 +26,7 @@ app.get('/', (req, res) => {
 
 app.post("/signin", (req, res) => { signin.signIn(req, res, db, bcrypt) });
 app.post("/register", (req, res) => { register.handleRegister(req, res, db, bcrypt) });
-app.post("/notes", (req, res) => { notes.syncNotes(req, res, db) });
+app.put("/notes", (req, res) => { notes.syncNotes(req, res, db) });
 
 app.listen(3001, () => {
 	console.log('app is running on port 3001')
