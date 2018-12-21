@@ -1,7 +1,7 @@
 const signIn = (req, res, db, bcrypt) =>  {
 	const { name, password } = req.body;
 	if (!name || !password) {
-		return res.status(400).json("improper form submit");
+		return res.status(400).json("Please enter a name and password");
 	}
 	db.select('name', 'hash')
 	.from('login')
@@ -14,13 +14,13 @@ const signIn = (req, res, db, bcrypt) =>  {
 			  	res.json(notes);
 			  })
 			  .catch(err => {
-			  	res.status(400).json('wrong credentials');
+			  	res.status(400).json('Name and password do not match');
 			  })
 		}
-		res.status(400).json('wrong credentials');	
+		res.status(400).json('Name and password do not match');	
 	})
 	.catch(err => {
-	 	res.status(400).json('wrong credentials');
+	 	res.status(400).json('Name and password do not match');
 	})
 }
 
