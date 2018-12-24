@@ -10,10 +10,8 @@ const notes = require('./controllers/notes');
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
-    user: 'blynn',
-    password: 'cookies',
-    database: 'nota-bene',
+    host : process.env.DATABASE_URL,
+    ssl: true,
   }
 });
 
