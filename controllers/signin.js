@@ -14,13 +14,13 @@ const signIn = (req, res, db, bcrypt) =>  {
 			  	res.json(notes);
 			  })
 			  .catch(err => {
-			  	res.status(400).json('Name and password do not match');
+			  	res.status(400).json('Wrong credentials. Please try again');
 			  })
 		}
-		res.status(400).json('Name and password do not match');	
+		res.status(400).json('Wrong credentials. Please try again');	
 	})
 	.catch(err => {
-	 	res.status(400).json('Name and password do not match');
+	 	res.status(400).json('Wrong credentials. Please try again');
 	})
 }
 
