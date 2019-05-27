@@ -27,8 +27,9 @@ app.get('/', (req, res) => {
 app.post("/signin", (req, res) => { signin.signIn(req, res, db, bcrypt) });
 app.post("/register", (req, res) => { register.handleRegister(req, res, db, bcrypt) });
 app.put("/notes", (req, res) => { notes.syncNotes(req, res, db) });
+app.get("/notes/:user", (req, res) => { notes.getNotes(req, res, db) });
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 3001, () => {
 	console.log(`app is running on port ${process.env.PORT}`)
 })
 

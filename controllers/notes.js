@@ -21,6 +21,19 @@ const syncNotes = (req, res, db) => {
 	
 }
 
+const getNotes = (req, res, db) => {
+	const { user } = req.params;
+	db.select(*)
+	  .from(user)
+	  .then(notes => {
+		res.json(notes);
+	  })
+	  .catch(err => {
+	  	res.status(400).json('Wrong credentials. Please try again');
+	  })
+}
+
 module.exports = {
-	syncNotes: syncNotes
+	syncNotes,
+	getNotes
 }
