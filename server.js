@@ -30,7 +30,7 @@ app.put("/notes", (req, res) => { notes.syncNotes(req, res, db) });
 app.get("/notes/:user", (req, res) => { notes.getNotes(req, res, db) });
 
 app.listen(process.env.PORT || 3001, () => {
-	console.log(`app is running on port ${process.env.PORT}`)
+	console.log(`app is running on port ${process.env.PORT || 3001}`)
 })
 
 /*
